@@ -52,7 +52,8 @@ namespace Skybrud.Social.Google.YouTube {
             return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/playlists", new NameValueCollection {
                 {"part", parts.ToString()},
                 {"mine", "true"},
-                {"access_token", Client.AccessToken}
+                {"access_token", Client.AccessToken},
+                {"key", Client.ApiKey}
             });
         }
 
@@ -64,7 +65,8 @@ namespace Skybrud.Social.Google.YouTube {
             return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/playlists", new NameValueCollection {
                 {"part", parts.ToString()},
                 {"channelId", channelId},
-                {"access_token", Client.AccessToken}
+                {"access_token", Client.AccessToken},
+                {"key", Client.ApiKey}
             });
         }
 
@@ -76,7 +78,8 @@ namespace Skybrud.Social.Google.YouTube {
             return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/playlists", new NameValueCollection {
                 {"part", parts.ToString()},
                 {"id", String.Join(",", playlistIds)},
-                {"access_token", Client.AccessToken}
+                {"access_token", Client.AccessToken},
+                {"key", Client.ApiKey}
             });
         }
 
@@ -89,7 +92,8 @@ namespace Skybrud.Social.Google.YouTube {
             // Initialize the query
             NameValueCollection query = new NameValueCollection {
                 {"part", "id,snippet,contentDetails,status"},
-                {"access_token", Client.AccessToken}
+                {"access_token", Client.AccessToken},
+                {"key", Client.ApiKey}
             };
 
             // Optional parameters
@@ -115,7 +119,8 @@ namespace Skybrud.Social.Google.YouTube {
             // Initialize the query
             NameValueCollection query = new NameValueCollection {
                 {"part", "id,snippet,contentDetails,fileDetails,liveStreamingDetails,player,processingDetails,recordingDetails,statistics,status,suggestions,topicDetails"},
-                {"access_token", Client.AccessToken}
+                {"access_token", Client.AccessToken},
+                {"key", Client.ApiKey}
             };
 
             // Optional parameters

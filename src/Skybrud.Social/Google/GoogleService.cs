@@ -80,6 +80,20 @@ namespace Skybrud.Social.Google {
         }
 
         /// <summary>
+        /// Initializes a new instance based on an API key. Calling this
+        /// method will not make any calls to the Google Accounts API.
+        /// </summary>
+        /// <param name="apiKey">The API key.</param>
+        public static GoogleService CreateFromApiKey(string apiKey)
+        {
+            return new GoogleService {
+                Client = new GoogleOAuthClient {
+                    ApiKey = apiKey,
+                }
+            };
+        }
+
+        /// <summary>
         /// Initializes a new instance based on the specified refresh token.
         /// The refresh token is used for making a call to the Google Accounts
         /// API to get a new access token. Access tokens typically expire after

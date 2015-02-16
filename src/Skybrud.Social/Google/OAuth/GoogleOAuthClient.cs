@@ -56,6 +56,11 @@ namespace Skybrud.Social.Google.OAuth {
         public string AccessToken { get; set; }
 
         /// <summary>
+        /// Gets or sets the API key.
+        /// </summary>
+        public string ApiKey { get; set; }
+
+        /// <summary>
         /// Gets a reference to the raw Analytics endpoint.
         /// </summary>
         public AnalyticsRawEndpoint Analytics {
