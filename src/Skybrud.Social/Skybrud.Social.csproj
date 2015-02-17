@@ -215,6 +215,8 @@
     <Compile Include="Google\Analytics\Objects\AnalyticsDataCell.cs" />
     <Compile Include="Google\Exceptions\GoogleOAuthException.cs" />
     <Compile Include="Google\OAuth\GoogleScopeCollection.cs" />
+    <Compile Include="Google\YouTube\Objects\PlaylistItem\YouTubePlaylistItemThumbnail.cs" />
+    <Compile Include="Google\YouTube\Objects\PlaylistItem\YouTubePlaylistItemThumbnails.cs" />
     <Compile Include="Http\PostData\ISocialDataValue.cs" />
     <Compile Include="Http\PostData\SocialPostFileValue.cs" />
     <Compile Include="Http\PostData\SocialPostValue.cs" />

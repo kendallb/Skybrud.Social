@@ -17,14 +17,24 @@ namespace Skybrud.Social.Google.YouTube {
         }
 
         public string GetVideoDetails(string id) {
-
             NameValueCollection query = new NameValueCollection();
             query.Add("id", id);
             query.Add("part", "snippet,contentDetails,fileDetails,player,processingDetails,recordingDetails,statistics,status,suggestions,topicDetails");
             query.Add("access_token", Client.AccessToken);
+            query.Add("key", Client.ApiKey);
 
             return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/videos", query);
 
+        }
+
+        public string GetChannelForUsername(YouTubeChannelPartsCollection parts, string userName) {
+            NameValueCollection query = new NameValueCollection();
+            query.Add("part", parts.ToString());
+            query.Add("forUsername", userName);
+            query.Add("access_token", Client.AccessToken);
+            query.Add("key", Client.ApiKey);
+
+            return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/channels", query);
         }
 
         public string GetMyChannels(YouTubeChannelPart part) {
@@ -32,14 +42,13 @@ namespace Skybrud.Social.Google.YouTube {
         }
 
         public string GetMyChannels(YouTubeChannelPartsCollection parts) {
-
             NameValueCollection query = new NameValueCollection();
             query.Add("part", parts.ToString());
             query.Add("mine", "true");
             query.Add("access_token", Client.AccessToken);
+            query.Add("key", Client.ApiKey);
 
             return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/channels", query);
-
         }
 
         #region Playlists

@@ -15,6 +15,7 @@ namespace Skybrud.Social.Google.YouTube.Objects.PlaylistItem {
         public string PlaylistId { get; private set; }
         public string VideoId { get; private set; }
         public int Position { get; private set; }
+        public YouTubePlaylistItemThumbnails Thumbnails { get; private set; }
 
         #endregion
         
@@ -62,7 +63,8 @@ namespace Skybrud.Social.Google.YouTube.Objects.PlaylistItem {
                 Title = obj.GetString("title"),
                 Description = obj.GetString("description"),
                 PlaylistId = obj.GetString("playlistId"),
-                Position = obj.GetInt32("position")
+                Position = obj.GetInt32("position"),
+                Thumbnails = obj.GetObject("thumbnails", YouTubePlaylistItemThumbnails.Parse)
             };
 
             // If the item is a video (which it most likely is), we grab the ID of the video

@@ -1,8 +1,10 @@
 using System.Linq;
+using Skybrud.Social.Google.YouTube.Objects.Channel;
 using Skybrud.Social.Google.YouTube.Objects.Playlist;
 using Skybrud.Social.Google.YouTube.Objects.PlaylistItem;
 using Skybrud.Social.Google.YouTube.Objects.Videos;
 using Skybrud.Social.Google.YouTube.Responses;
+using Skybrud.Social.Json;
 
 namespace Skybrud.Social.Google.YouTube {
     
@@ -19,6 +21,28 @@ namespace Skybrud.Social.Google.YouTube {
 
         internal YouTubeEndpoint(GoogleService service) {
             Service = service;
+        }
+
+        public string GetUploadChannelForUsername(string userName) {
+            var json = Raw.GetChannelForUsername(new YouTubeChannelPartsCollection(YouTubeChannelPart.ContentDetails), userName);
+            var obj = JsonObject.ParseJson(json);
+            if (obj == null) 
+                return null;
+
+            // Check for any API errors
+            GoogleApiResponse.ValidateResponse(obj);
+
+            // Get the items list and parse it 
+            var items = obj.GetArray("items");
+            if (items == null || items.Length < 1)
+                return null;
+            var details = items.GetObject(0).GetObject("contentDetails");
+            if (details == null)
+                return null;
+            var relatedPlaylists = details.GetObject("relatedPlaylists");
+            if (relatedPlaylists == null)
+                return null;
+            return relatedPlaylists.GetString("uploads");
         }
 
         #region Playlists
