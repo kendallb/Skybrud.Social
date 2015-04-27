@@ -37,7 +37,19 @@ namespace Skybrud.Social.Google.YouTube {
             return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/channels", query);
         }
 
-        public string GetMyChannels(YouTubeChannelPart part) {
+        public string GetChannelDetails(YouTubeChannelPartsCollection parts, string channel)
+        {
+            NameValueCollection query = new NameValueCollection();
+            query.Add("part", parts.ToString());
+            query.Add("id", channel);
+            query.Add("access_token", Client.AccessToken);
+            query.Add("key", Client.ApiKey);
+
+            return SocialUtils.DoHttpGetRequestAndGetBodyAsString("https://www.googleapis.com/youtube/v3/channels", query);
+        }
+
+        public string GetMyChannels(YouTubeChannelPart part)
+        {
             return GetMyChannels(new YouTubeChannelPartsCollection(part));
         }
 
