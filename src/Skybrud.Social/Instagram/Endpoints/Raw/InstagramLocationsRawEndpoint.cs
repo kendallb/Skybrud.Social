@@ -60,7 +60,7 @@ namespace Skybrud.Social.Instagram.Endpoints.Raw {
         /// </summary>
         /// <param name="locationId">The ID of the location.</param>
         /// <see cref="http://instagram.com/developer/endpoints/locations/#get_locations_media_recent"/>
-        public SocialHttpResponse GetRecentMedia(int locationId) {
+        public SocialHttpResponse GetRecentMedia(long locationId) {
             return GetRecentMedia(locationId, null);
         }
 
@@ -69,7 +69,7 @@ namespace Skybrud.Social.Instagram.Endpoints.Raw {
         /// </summary>
         /// <param name="locationId">The ID of the location.</param>
         /// <param name="options">The options for the search.</param>
-        public SocialHttpResponse GetRecentMedia(int locationId, InstagramLocationRecentMediaOptions options) {
+        public SocialHttpResponse GetRecentMedia(long locationId, InstagramLocationRecentMediaOptions options) {
             return Client.DoAuthenticatedGetRequest("https://api.instagram.com/v1/locations/" + locationId + "/media/recent", options);
         }
 
